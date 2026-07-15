@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google検索コマンドジェネレーター｜検索演算子を簡単作成</title>
+  <meta name="description" content="Google検索の完全一致、除外、site、filetype、intitle、期間指定などの検索コマンドをフォームから簡単に作成できる無料ツールです。">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="gs-header">
+    <div class="gs-container">
+      <a class="gs-brand" href="./" aria-label="Google検索コマンドジェネレーター トップ">Search Tools</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="gs-hero">
+      <div class="gs-container">
+        <p class="gs-eyebrow" lang="en">Google Search Operator Generator</p>
+        <h1>Google検索コマンドジェネレーター</h1>
+        <p>検索キーワードやサイト、ファイル形式、期間などの条件を選ぶだけで、Google検索コマンドを簡単に作成できます。</p>
+      </div>
+    </section>
+
+    <div class="gs-container gs-tool-layout">
+      <form id="search-form" class="gs-form" autocomplete="off">
+        <fieldset class="gs-card">
+          <legend>基本キーワード</legend>
+          <div class="gs-fields">
+            <div class="gs-field gs-field--wide">
+              <label for="keywords">検索キーワード</label>
+              <input id="keywords" name="keywords" type="text" placeholder="例：WordPress 高速化">
+            </div>
+            <div class="gs-field">
+              <label for="exact">完全一致キーワード</label>
+              <textarea id="exact" name="exact" rows="3" placeholder="例：WordPress 高速化"></textarea>
+              <small>複数指定する場合は、1行に1つ入力してください。</small>
+            </div>
+            <div class="gs-field">
+              <label for="exclude">除外キーワード</label>
+              <textarea id="exclude" name="exclude" rows="3" placeholder="例：求人&#10;スクール"></textarea>
+              <small>改行・空白・カンマで複数指定できます。</small>
+            </div>
+            <div class="gs-field gs-field--wide">
+              <label for="orKeywords">OR検索キーワード</label>
+              <input id="orKeywords" name="orKeywords" type="text" placeholder="例：WordPress Shopify">
+              <small>空白またはカンマで区切ると、ORで結合します。</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="gs-card">
+          <legend>絞り込み条件</legend>
+          <div class="gs-fields">
+            <div class="gs-field">
+              <label for="site">サイト内検索</label>
+              <input id="site" name="site" type="text" inputmode="url" placeholder="例：https://example.com/blog/">
+            </div>
+            <div class="gs-field">
+              <label for="filetype">ファイル形式</label>
+              <select id="filetype" name="filetype">
+                <option value="">指定なし</option><option value="pdf">PDF</option><option value="docx">Word</option>
+                <option value="xlsx">Excel</option><option value="pptx">PowerPoint</option><option value="csv">CSV</option><option value="txt">TXT</option>
+              </select>
+            </div>
+            <div class="gs-field gs-field--wide">
+              <label for="related">関連サイト検索</label>
+              <input id="related" name="related" type="text" inputmode="url" placeholder="例：example.com">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="gs-card">
+          <legend>ページ条件</legend>
+          <div class="gs-fields">
+            <div class="gs-field">
+              <label for="intitle">ページタイトルに含む</label>
+              <input id="intitle" name="intitle" type="text" placeholder="例：WordPress 高速化">
+              <label class="gs-check"><input id="intitleExact" name="intitleExact" type="checkbox"> 完全一致として扱う</label>
+            </div>
+            <div class="gs-field">
+              <label for="inurl">URLに含む</label>
+              <input id="inurl" name="inurl" type="text" placeholder="例：wordpress">
+            </div>
+            <div class="gs-field gs-field--wide">
+              <label for="intext">本文に含む</label>
+              <input id="intext" name="intext" type="text" placeholder="例：高速化">
+              <label class="gs-check"><input id="intextExact" name="intextExact" type="checkbox"> 完全一致として扱う</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="gs-card">
+          <legend>期間指定</legend>
+          <div class="gs-fields">
+            <div class="gs-field"><label for="after">開始日</label><input id="after" name="after" type="date"></div>
+            <div class="gs-field"><label for="before">終了日</label><input id="before" name="before" type="date"></div>
+          </div>
+        </fieldset>
+      </form>
+
+      <aside class="gs-result" aria-labelledby="result-title">
+        <h2 id="result-title">生成された検索コマンド</h2>
+        <output id="search-command" class="gs-command" for="search-form">検索条件を入力してください</output>
+        <div class="gs-actions">
+          <button id="copy-button" class="gs-button gs-button--secondary" type="button" disabled>コピー</button>
+          <button id="search-button" class="gs-button gs-button--primary" type="button" disabled>Googleで検索</button>
+          <button id="reset-button" class="gs-button gs-button--plain" type="button">リセット</button>
+        </div>
+        <p id="status-message" class="gs-status" role="status" aria-live="polite"></p>
+      </aside>
+    </div>
+
+    <section class="gs-container gs-presets" aria-labelledby="preset-title">
+      <h2 id="preset-title">よく使う検索例</h2>
+      <div class="gs-preset-grid">
+        <button type="button" class="gs-preset" data-preset="site"><strong>特定サイト内で検索</strong><span>WordPress site:example.com</span></button>
+        <button type="button" class="gs-preset" data-preset="pdf"><strong>PDF資料を検索</strong><span>WordPress filetype:pdf</span></button>
+        <button type="button" class="gs-preset" data-preset="exact"><strong>完全一致で検索</strong><span>"WordPress 高速化"</span></button>
+        <button type="button" class="gs-preset" data-preset="exclude"><strong>不要なキーワードを除外</strong><span>WordPress -求人 -スクール</span></button>
+        <button type="button" class="gs-preset" data-preset="recent"><strong>最近公開されたページを検索</strong><span>WordPress after:2026-01-01</span></button>
+      </div>
+    </section>
+
+    <article class="gs-container gs-guide">
+      <section><h2>Google検索コマンドとは</h2><p>Google検索で検索結果を細かく絞り込むための記号や命令です。キーワードと検索演算子を組み合わせることで、特定サイトのページや資料を効率よく探せます。</p></section>
+      <section><h2>よく使うGoogle検索演算子</h2><div class="gs-table-wrap"><table><thead><tr><th scope="col">演算子</th><th scope="col">用途</th></tr></thead><tbody>
+        <tr><td><code>"キーワード"</code></td><td>完全一致検索</td></tr><tr><td><code>-キーワード</code></td><td>特定のキーワードを除外</td></tr>
+        <tr><td><code>OR</code></td><td>どちらかのキーワードを検索</td></tr><tr><td><code>site:</code></td><td>特定サイト内を検索</td></tr>
+        <tr><td><code>filetype:</code></td><td>ファイル形式を指定</td></tr><tr><td><code>intitle:</code></td><td>タイトルに含まれるページを検索</td></tr>
+        <tr><td><code>inurl:</code></td><td>URLに含まれるページを検索</td></tr><tr><td><code>intext:</code></td><td>本文に含まれるページを検索</td></tr>
+        <tr><td><code>after:</code></td><td>指定日以降のページを検索</td></tr><tr><td><code>before:</code></td><td>指定日以前のページを検索</td></tr>
+        <tr><td><code>related:</code></td><td>関連するサイトを検索</td></tr>
+      </tbody></table></div></section>
+      <section><h2>使用上の注意</h2><p>Googleの検索仕様や対象ページの状態によって、一部の検索演算子が必ずしも厳密に適用されない場合があります。生成結果は検索を補助するものとしてご利用ください。</p></section>
+    </article>
+  </main>
+  <footer class="gs-footer"><div class="gs-container"><p>このツールはGoogle公式のサービスではありません。</p></div></footer>
+  <script src="./script.js" defer></script>
+</body>
+</html>
