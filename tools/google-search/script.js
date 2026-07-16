@@ -105,6 +105,7 @@
 
   form.addEventListener('input', update);
   form.addEventListener('change', update);
+  form.addEventListener('submit', (event) => event.preventDefault());
   elements.copy.addEventListener('click', copyCommand);
   elements.search.addEventListener('click', () => {
     const command = elements.command.dataset.value;
