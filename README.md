@@ -1,4 +1,4 @@
-# Google Search Operator Generator
+# G検索コマンドジェネレーター
 
 フォームから条件を選び、Google検索コマンドを生成できる静的Webツールです。
 
@@ -7,7 +7,7 @@
 - 完全一致、除外、OR検索
 - `site:`、`filetype:`、`intitle:`、`inurl:`、`intext:`、`related:`
 - `after:`、`before:`による期間指定
-- 検索コマンドのコピーとGoogle検索
+- 検索コマンドのコピー
 - よく使う条件のプリセット
 
 外部APIや外部ライブラリは使用していません。

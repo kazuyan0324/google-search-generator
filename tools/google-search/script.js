@@ -7,7 +7,7 @@
   const get = (id) => document.getElementById(id);
   const elements = {
     command: get('search-command'), status: get('status-message'), copy: get('copy-button'),
-    search: get('search-button'), reset: get('reset-button')
+    reset: get('reset-button')
   };
 
   const clean = (value) => value.trim().replace(/\s+/g, ' ');
@@ -59,7 +59,6 @@
     elements.command.textContent = command || '検索条件を入力してください';
     elements.command.dataset.value = command;
     elements.copy.disabled = !command;
-    elements.search.disabled = !command;
     setStatus('');
   }
 
@@ -107,10 +106,6 @@
   form.addEventListener('change', update);
   form.addEventListener('submit', (event) => event.preventDefault());
   elements.copy.addEventListener('click', copyCommand);
-  elements.search.addEventListener('click', () => {
-    const command = elements.command.dataset.value;
-    if (command) window.open(`https://www.google.com/search?q=${encodeURIComponent(command)}`, '_blank', 'noopener,noreferrer');
-  });
   elements.reset.addEventListener('click', () => { form.reset(); update(); form.elements.keywords.focus(); });
   document.querySelectorAll('[data-preset]').forEach((button) => button.addEventListener('click', () => applyPreset(button.dataset.preset)));
   update();

@@ -28,13 +28,12 @@ button,input,textarea,select { font:inherit; }
 .gs-result { position:sticky; top:24px; padding:24px; border-top:4px solid var(--gs-blue); }
 .gs-result h2 { margin:0 0 14px; font-size:1.15rem; }
 .gs-command { display:block; min-height:128px; padding:16px; overflow-wrap:anywhere; white-space:pre-wrap; color:#1b3155; background:#edf4ff; border:1px solid #b9d2f7; border-radius:6px; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; line-height:1.6; }
+.gs-result-help { margin:12px 0 0; color:var(--gs-muted); font-size:.9rem; }
 .gs-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
 .gs-button { min-height:46px; padding:9px 14px; border:1px solid transparent; border-radius:6px; font-weight:700; cursor:pointer; }
 .gs-button:disabled { opacity:.5; cursor:not-allowed; }
-.gs-button--primary { color:#fff; background:var(--gs-blue); }
-.gs-button--primary:hover:not(:disabled) { background:var(--gs-blue-dark); }
 .gs-button--secondary { color:var(--gs-blue-dark); background:#fff; border-color:var(--gs-blue); }
-.gs-button--plain { grid-column:1/-1; color:#3f4c5f; background:#eef1f5; }
+.gs-button--plain { color:#3f4c5f; background:#eef1f5; }
 .gs-status { min-height:1.7em; margin:10px 0 0; color:#19713d; font-size:.9rem; }
 .gs-status[data-error="true"] { color:var(--gs-danger); }
 .gs-presets { padding:28px; margin-bottom:48px; }
