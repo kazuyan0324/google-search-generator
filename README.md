@@ -11,3 +11,12 @@
 - よく使う条件のプリセット
 
 外部APIや外部ライブラリは使用していません。
+
+## デプロイ
+
+Cloudflare PagesでGitHubリポジトリと連携して公開します。
+
+- Production branch: `main`
+- Framework preset: `None`
+- Build command: 空欄
+- Build output directory: `/`
