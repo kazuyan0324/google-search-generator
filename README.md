@@ -14,9 +14,4 @@
 
 ## デプロイ
 
-Cloudflare PagesでGitHubリポジトリと連携して公開します。
-
-- Production branch: `main`
-- Framework preset: `None`
-- Build command: 空欄
-- Build output directory: `/`
+GitHub Pagesで `main` ブランチのリポジトリルートを公開します。
